@@ -5,7 +5,8 @@ const router = express.Router();
 const Account = require('../Controllers/Account.controler');
 
 router.get('/accounts', Account.get);
-
 router.post('/accounts', Account.post);
+router.put('/accounts', Account.put);
+
 
 module.exports = router

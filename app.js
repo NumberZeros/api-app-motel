@@ -14,7 +14,7 @@ app.use('/apis', Account);
 
 mongoose.connect(
     process.env.BASE_URL,
-    { dbName: 'MOTEL', useNewUrlParser: true, useUnifiedTopology: true },
+    {  useNewUrlParser: true, useUnifiedTopology: true },
     () => {
         console.log("Connected to db");
     }

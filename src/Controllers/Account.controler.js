@@ -1,10 +1,31 @@
-const Account = require('../Modals/Account.model');
 
-exports.test = async function (req, res) {
-    // xu ly model
-    const myAccount = await Account.find({ });
-    res.status(406).json({
-        success: true,
-        data: myAccount// ket qua
-    });
+const Account = require("../Modals/Accounts.model")
+exports.get = async (req, res) => {
+    console.log('here....')
+    const data = await Account.find();
+    try {
+        res.json({
+            success: true,
+            data,
+        })
+    } catch (err) {
+        res.status(404).send({
+            messages: "not founding"
+        })
+    }
+};
+
+exports.insert = async (req, res, next) => {
+    try {
+        const data = await Account.create({ name: 'admin', username: "admin", password: "123456" })
+
+        res.json({
+            success: true,
+            body: data,
+        })
+    } catch (err) {
+        res.status(404).send({
+            messages: "not accept"
+        })
+    }
 };

@@ -7,16 +7,6 @@ let AccountSchema = new Schema({
     birthDay: {type: Date},
     username: String,
     password: String,
-    // motel: {
-    //     type: mongoose.Schema.Types.ObjectId, 
-    //     require: true,
-    //     ref: "motels"
-    // },
-    // payment: {
-    //     type: mongoose.Schema.Types.ObjectId, 
-    //     require: true,
-    //     ref: "payments"
-    // },
 });
 
-module.exports = mongoose.model('account', AccountSchema);
+module.exports = mongoose.model('accounts', AccountSchema);

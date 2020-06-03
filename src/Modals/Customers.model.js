@@ -7,5 +7,4 @@ let CustomerSchema = new Schema({
     note: {type: String},
 });
 
-// Export the model
 module.exports = mongoose.model('customers', CustomerSchema);

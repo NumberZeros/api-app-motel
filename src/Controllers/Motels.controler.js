@@ -18,7 +18,7 @@ exports.getAll = async (req, res) => {
 exports.post = async (req, res) => {
     try {
         const { body } = req;
-        console.log(req)
+        console.log(body)
         res.json({
             success: true,
             data: req.body,

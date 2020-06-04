@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const motels = require("./Motels.model")
-let MotelSchema = new Schema({
-    name: {type: String, index= true},
+let ReceiptsSchema = new Schema({
+    name: {type: String, index: true},
     quantityPower: {type: Number},
     quantityWater: {type: Number},
     prices: Number,
@@ -15,9 +14,9 @@ let MotelSchema = new Schema({
     motel: {
         type: mongoose.Schema.Types.ObjectId, 
         require: true,
-        ref: motels
+        ref: "motels"
     }
 });
 
 // Export the model
-module.exports = mongoose.model('motels', MotelSchema);
+module.exports = mongoose.model('receipts', ReceiptsSchema);

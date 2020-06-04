@@ -7,11 +7,16 @@ let MotelSchema = new Schema({
     initWater: {type: Number},
     prices: Number,
     notes: String,
-    customerId: {
+    customer: {
         type: mongoose.Schema.Types.ObjectId, 
         require: true,
         ref: 'customers'
-    }
+    },
+    contact: {
+        type: mongoose.Schema.Types.ObjectId, 
+        require: true,
+        ref: 'contacts'
+    },
 });
 
 // Export the model

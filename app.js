@@ -4,10 +4,9 @@ const bodyParser = require('body-parser')
 
 const Account = require('./src/Routers/Account.router');
 const Motels = require('./src/Routers/Motel.router')
-const Customers = require('./src/Modals/Customers.model')
+const Customers = require('./src/Routers/Customer.router')
 
 require("dotenv").config();
-require("./src/Modals/connect");
 
 const app = express();
 

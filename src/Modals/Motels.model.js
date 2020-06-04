@@ -7,7 +7,7 @@ let MotelSchema = new Schema({
     initWater: {type: Number},
     prices: Number,
     notes: String,
-    customer: {
+    customerId: {
         type: mongoose.Schema.Types.ObjectId, 
         require: true,
         ref: 'customers'

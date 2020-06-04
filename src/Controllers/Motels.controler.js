@@ -18,24 +18,16 @@ exports.getAll = async (req, res) => {
 exports.post = async (req, res) => {
     try {
         const { body } = req;
-        console.log(body)
+        await motels(body).validate();
+        const data = await motels.create(body);
         res.json({
             success: true,
-            data: req.body,
+            data,
         });
-        // if(body) {
-        //     const data = await motels.create(body);
-        //     res.json({
-        //         success: true,
-        //         data,
-        //     });
-        // } else {
-        //     console.log("error :" + err)
-        //     res.json({ message: "không thể thêm dữ liệu rỗng" })
-        // };
     }
     catch (err) {
-
+        console.log("error :" + err)
+        res.json({ message: "không thể thêm dữ liệu rỗng" })
     }
 
 }

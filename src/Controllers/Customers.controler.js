@@ -1,5 +1,6 @@
 
 const customer = require("../Modals/Customers.model")
+
 exports.getAll = async (req, res) => {
     const data = await customer.find();
     try {
@@ -15,29 +16,26 @@ exports.getAll = async (req, res) => {
 };
 
 exports.post = async (req, res) => {
-    const {body} = req;
     try {
-        const data = await customer.create(body ? body :{
-            username: "admin",
-            password: "12345"
-        });
+        const { body } = req;
+        await customer(body).validate();
+        const data = await customer.create(body);
         res.json({
             success: true,
             data,
         });
-    } catch (err) {
+    }
+    catch (err) {
         console.log("error :" + err)
-        res.json({ message: err })
-    };
+        res.json({ message: "không thể thêm dữ liệu rỗng" })
+    }
+
 }
 
 exports.put = async (req, res) => {
-    const {body} = req;
+    const { body, params } = req;
     try {
-        const data = await customer.create(body ? body :{
-            username: "admin",
-            password: "12345"
-        });
+        const data = await customer.findOneAndUpdate(params.id, body);
         res.json({
             success: true,
             data,
@@ -49,7 +47,7 @@ exports.put = async (req, res) => {
 }
 
 exports.getInfo = async (req, res) => {
-    const {body, params} = req;
+    const { body, params } = req;
     console.log(params)
     try {
         res.json({

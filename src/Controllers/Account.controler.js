@@ -1,12 +1,12 @@
 
 const account = require("../Modals/Accounts.model")
+// const {pick} = require("lodash")
 exports.get = async (req, res) => {
-    console.log('here....')
     const data = await account.find();
     try {
         res.json({
             success: true,
-            data,
+            data: data,
         })
     } catch (err) {
         res.status(404).send({
@@ -15,13 +15,11 @@ exports.get = async (req, res) => {
     }
 };
 
-exports.post = async (req, res) => {
-    const {body} = req;
+exports.login = async (req, res) => {
+    const {username, password} = req.body;
+    
     try {
-        const data = await account.create(body ? body :{
-            username: "admin",
-            password: "12345"
-        });
+        const data = await account.findOne({username, password});
         res.json({
             success: true,
             data,

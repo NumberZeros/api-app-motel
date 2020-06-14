@@ -17,7 +17,6 @@ exports.get = async (req, res) => {
 
 exports.login = async (req, res) => {
     const {username, password} = req.body;
-    
     try {
         const data = await account.findOne({username, password});
         res.json({
@@ -31,12 +30,9 @@ exports.login = async (req, res) => {
 }
 
 exports.put = async (req, res) => {
-    const {body} = req;
+    const { body, params } = req;
     try {
-        const data = await account.create(body ? body :{
-            username: "admin",
-            password: "12345"
-        });
+        const data = await account.findOneAndUpdate(params.id, body);
         res.json({
             success: true,
             data,

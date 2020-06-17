@@ -34,8 +34,9 @@ exports.post = async (req, res) => {
 
 exports.put = async (req, res) => {
     const { body, params } = req;
+    const {name, initPower, initWater, notes, customer, contact} = body
     try {
-        const data = await motels.findOneAndUpdate(params.id, body);
+        const data = await motels.findOneAndUpdate(params.id, {name, initPower, initWater, notes, customer, contact});
         res.json({
             success: true,
             data,

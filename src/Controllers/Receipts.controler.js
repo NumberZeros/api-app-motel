@@ -34,6 +34,7 @@ exports.post = async (req, res) => {
 
 exports.put = async (req, res) => {
     const { body, params } = req;
+    const {name, quantityPower, quantityWater,prices, pricesOther,status,motel}
     try {
         const data = await receipts.findOneAndUpdate(params.id, body);
         res.json({

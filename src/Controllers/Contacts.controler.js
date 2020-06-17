@@ -34,8 +34,10 @@ exports.post = async (req, res) => {
 
 exports.put = async (req, res) => {
     const { body, params } = req;
+    const {name, linkFile} = body
+    const updateAt = new Date();
     try {
-        const data = await contacts.findOneAndUpdate(params.id, body);
+        const data = await contacts.findOneAndUpdate(params.id, {name, linkFile, updateAt});
         res.json({
             success: true,
             data,

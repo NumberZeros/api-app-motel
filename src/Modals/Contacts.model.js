@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 let ContactsSchema = new Schema({
     name: {type: String, index: true, require: true},
     linkFile: {type: String},
-    createAt: {type: Date},
+    createAt: {
+        type: Date,
+        default: new Date(),
+    },
+    updateAt: {type: Date}
 });
 
 module.exports = mongoose.model("contacts", ContactsSchema);

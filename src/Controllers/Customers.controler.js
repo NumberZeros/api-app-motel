@@ -34,8 +34,9 @@ exports.post = async (req, res) => {
 
 exports.put = async (req, res) => {
     const { body, params } = req;
+    const {name, birthDay, note} = body;
     try {
-        const data = await customer.findOneAndUpdate(params.id, body);
+        const data = await customer.findOneAndUpdate(params.id, {name, birthDay, note});
         res.json({
             success: true,
             data,

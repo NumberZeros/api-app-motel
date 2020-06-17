@@ -31,8 +31,9 @@ exports.login = async (req, res) => {
 
 exports.put = async (req, res) => {
     const { body, params } = req;
+    const {name, email, birthDay, username} = body
     try {
-        const data = await account.findOneAndUpdate(params.id, body);
+        const data = await account.findOneAndUpdate(params.id, {name, email, birthDay, username});
         res.json({
             success: true,
             data,

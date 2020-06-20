@@ -1,6 +1,6 @@
 
 const payments = require("../Modals/Payments.model")
-
+const motels = require("../Modals/Motels.model")
 exports.getAll = async (req, res) => {
     const data = await payments.find();
     try {
@@ -33,14 +33,25 @@ exports.post = async (req, res) => {
 }
 
 exports.put = async (req, res) => {
-    const { body, params } = req;
-    const {name, quantityPower,quantityWater, prices, pricesOther} = body
     try {
-        const data = await payments.findOneAndUpdate({_id: params.id}, {name, quantityPower,quantityWater, prices, pricesOther},  { new: true });
-        res.json({
-            success: true,
-            data,
-        });
+        const { body, params } = req;
+        const { name, quantityPower, quantityWater, prices, pricesOther, motelId } = body
+        if (motelId) {
+            const success = await motels.findOneAndUpdate({ _id: motelId }, { payment: params.id })
+            if (success) {
+                const data = await payments.findOneAndUpdate({ _id: params.id }, { name, quantityPower, quantityWater, prices, pricesOther }, { new: true });
+                res.json({
+                    success: true,
+                    data,
+                });
+            } else throw "khong tim thay motel"
+        } else {
+            const data = await payments.findOneAndUpdate({ _id: params.id }, { name, quantityPower, quantityWater, prices, pricesOther }, { new: true });
+            res.json({
+                success: true,
+                data,
+            });
+        }
     } catch (err) {
         console.log("error :" + err)
         res.json({ message: err })
@@ -64,7 +75,7 @@ exports.getInfo = async (req, res) => {
 exports.delete = async (req, res) => {
     const { params } = req;
     try {
-        const data = await payments.findOneAndDelete({_id: params.id});
+        const data = await payments.findOneAndDelete({ _id: params.id });
         res.json({
             success: true,
             data,

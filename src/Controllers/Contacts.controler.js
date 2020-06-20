@@ -39,17 +39,17 @@ exports.put = async (req, res) => {
         const { body, params } = req;
         const { name, linkFile, customerId, motelId } = body
         const updateAt = new Date();
-        if(customerId && motelId){
-            const success = await customers.findOne({_id: customerId});
-            if(success){
-                await motels.findOneAndUpdate({_id: motelId}, {customer: customerId, contact: params.id})
+        if (customerId && motelId) {
+            const success = await customers.findOne({ _id: customerId });
+            if (success) {
+                await motels.findOneAndUpdate({ _id: motelId }, { customer: customerId, contact: params.id })
                 const data = await contacts.findOneAndUpdate({ _id: params.id }, { name, linkFile, updateAt }, { new: true });
                 res.json({
                     success: true,
                     data,
                 });
-            }else throw "khong tim thay customer";
-        } else{
+            } else throw "khong tim thay customer";
+        } else {
             const data = await contacts.findOneAndUpdate({ _id: params.id }, { name, linkFile, updateAt }, { new: true });
             res.json({
                 success: true,

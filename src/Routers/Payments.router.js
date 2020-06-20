@@ -9,4 +9,5 @@ router.get('/', Payments.getAll);
 router.get('/:id', Payments.getInfo);
 router.post('/create', Payments.post);
 router.put('/:id', Payments.put);
+router.delete('/:id', Payments.delete);
 module.exports = router;

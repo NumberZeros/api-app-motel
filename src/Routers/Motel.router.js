@@ -9,4 +9,5 @@ router.get('/', Motels.getAll);
 router.get('/:id', Motels.getInfo);
 router.post('/create', Motels.post);
 router.put('/:id', Motels.put);
+router.delete('/:id', Motels.delete);
 module.exports = router;

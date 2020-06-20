@@ -9,4 +9,5 @@ router.get('/', Contacts.getAll);
 router.get('/:id', Contacts.getInfo);
 router.post('/create', Contacts.post);
 router.put('/:id', Contacts.put);
+router.delete('/:id', Contacts.delete);
 module.exports = router;

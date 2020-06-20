@@ -9,4 +9,5 @@ router.get('/', Customer.getAll);
 router.get('/:id', Customer.getInfo);
 router.post('/create', Customer.post);
 router.put('/:id', Customer.put);
+router.delete('/:id', Customer.delete);
 module.exports = router;

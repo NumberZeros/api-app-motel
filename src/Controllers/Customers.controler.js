@@ -36,7 +36,9 @@ exports.put = async (req, res) => {
     const { body, params } = req;
     const {name, birthDay, note} = body;
     try {
-        const data = await customer.findOneAndUpdate(params.id, {name, birthDay, note});
+        console.log("body", body, params.id)
+        const data = await customer.findOneAndUpdate({_id: params.id}, {name, birthDay, note});
+        console.log("put", data)
         res.json({
             success: true,
             data,
@@ -54,6 +56,20 @@ exports.getInfo = async (req, res) => {
         res.json({
             success: true,
             params,
+        });
+    } catch (err) {
+        console.log("error :" + err)
+        res.json({ message: err })
+    };
+}
+
+exports.delete = async (req, res) => {
+    const { params } = req;
+    try {
+        const data = await account.findOneAndDelete({_id: params.id});
+        res.json({
+            success: true,
+            data,
         });
     } catch (err) {
         console.log("error :" + err)

@@ -9,4 +9,5 @@ router.get('/', Receipts.getAll);
 router.get('/:id', Receipts.getInfo);
 router.post('/create', Receipts.post);
 router.put('/:id', Receipts.put);
+router.delete('/:id', Receipts.delete);
 module.exports = router;

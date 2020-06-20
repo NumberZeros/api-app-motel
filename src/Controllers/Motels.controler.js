@@ -33,10 +33,12 @@ exports.post = async (req, res) => {
 }
 
 exports.put = async (req, res) => {
-    const { body, params } = req;
-    const {name, initPower, initWater, notes, customer, contact} = body
     try {
-        const data = await motels.findOneAndUpdate({_id: params.id}, {name, initPower, initWater, notes, customer, contact});
+        const { body, params } = req;
+        const {name, initPower, initWater, notes, customer, contact} = body
+        console.log(body)
+        const data = await motels.findOneAndUpdate({_id: params.id}, {name, initPower, initWater, notes, customer, contact},  { new: true });
+        console.log("data", data)
         res.json({
             success: true,
             data,

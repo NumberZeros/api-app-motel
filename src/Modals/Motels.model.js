@@ -17,6 +17,11 @@ let MotelSchema = new Schema({
         require: true,
         ref: 'contacts'
     },
+    payment: {
+        type: mongoose.Schema.Types.ObjectId, 
+        require: true,
+        ref: 'payments'
+    },
 });
 
 // Export the model

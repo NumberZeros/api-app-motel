@@ -36,7 +36,7 @@ exports.put = async (req, res) => {
     const { body, params } = req;
     const {name, quantityPower,quantityWater, prices, pricesOther} = body
     try {
-        const data = await payments.findOneAndUpdate({_id: params.id}, {name, quantityPower,quantityWater, prices, pricesOther});
+        const data = await payments.findOneAndUpdate({_id: params.id}, {name, quantityPower,quantityWater, prices, pricesOther},  { new: true });
         res.json({
             success: true,
             data,

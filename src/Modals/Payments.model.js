@@ -7,6 +7,10 @@ let PaymentSchema = new Schema({
     quantityWater: {type: Number},
     prices: Number,
     pricesOther: Number,
+    createAt: {
+        type: Date,
+        default: new Date(),
+    },
 });
 
 // Export the model

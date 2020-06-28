@@ -66,7 +66,7 @@ exports.getInfo = async (req, res) => {
 exports.delete = async (req, res) => {
     const { params } = req;
     try {
-        const data = await account.findOneAndDelete({_id: params.id});
+        const data = await customer.findOneAndDelete({_id: params.id});
         res.json({
             success: true,
             data,

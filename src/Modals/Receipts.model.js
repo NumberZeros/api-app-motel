@@ -5,8 +5,11 @@ let ReceiptsSchema = new Schema({
     quantityPower: {type: Number},
     quantityWater: {type: Number},
     prices: Number,
-    pricesOther: String,
-    status: Boolean,
+    pricesOther: Number,
+    status: {
+        type: Boolean,
+        default: false,
+    },
     createAt: {
         type: Date,
         default: new Date(),
